@@ -9,6 +9,7 @@ namespace AM.ApplicationCore.Domain
     public enum PlaneType{Boing,Airbus};
     public class Plane
     {
+        public int Id { get; set; }
         public int Capacity { get; set; }
         public DateTime ManufactureDate { get; set; }
         public int PlanedId { get; set; }
