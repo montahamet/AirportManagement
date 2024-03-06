@@ -3,19 +3,20 @@
 
 using AM.ApplicationCore.Domain;
 using AM.ApplicationCore.Services;
+using AM.infrastructure;
 
 Console.WriteLine("Hello, Montaha!");
 Plane p1 = new Plane();
 p1.Capacity = 10;
 p1.ManufactureDate = new DateTime(2024, 01, 29);
 p1.planetype = PlaneType.Boing;
-p1.PlanedId = 1;
+p1.Id = 1;
 Console.WriteLine(p1);
 //Plane p2 = new Plane(PlaneType.Airbus, 150,DateTime.Now);
 //Console.WriteLine(p2);
 Plane p3 = new Plane { 
     Capacity = 10111,
-    PlanedId = 1,
+    Id = 1,
     planetype = PlaneType.Boing,
 
 
@@ -72,4 +73,10 @@ Console.WriteLine("********************");
 Passenger pass1= new Passenger() { FirstName ="montaha",LastName="metjaouel"};//initialiseur d objet
 pass1.UpperFullName();
 Console.WriteLine("After"+pass1.FirstName+""+pass1.LastName);
+
+
+
+AMContext context = new AMContext { };
+context.Flights.Add(TestData.flight2);
+context.SaveChanges();
 

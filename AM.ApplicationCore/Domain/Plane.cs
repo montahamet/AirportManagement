@@ -12,7 +12,7 @@ namespace AM.ApplicationCore.Domain
         public int Id { get; set; }
         public int Capacity { get; set; }
         public DateTime ManufactureDate { get; set; }
-        public int PlanedId { get; set; }
+        //public int PlanedId { get; set; }
         public PlaneType planetype { get; set; }
         public ICollection<Flight> Flights { get; set; }
         public override string ToString()
