@@ -17,9 +17,9 @@ namespace AM.ApplicationCore.Domain
         public DateTime EffectiveArrival{ get; set; }
         public double EstimatedDuration { get; set; }
         [ForeignKey("PlaneId")]
-        public Plane MyPlane{ get; set; }
+        public virtual Plane MyPlane{ get; set; }
         public string AirlineLogo { get; set; }
-        public ICollection<Passenger> Passangers { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
         public override string ToString()
         {
             return "Destination = "+ Destination+" La Durée = "+ EstimatedDuration;

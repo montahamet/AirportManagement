@@ -129,12 +129,12 @@ namespace AM.ApplicationCore.Services
             return reqLambda.ToList();
         }
 
-        public IEnumerable<Passenger> SeniorTravellers(Flight flight)
-        {
-            //return (from p in flight.Passangers.OfType<Traveller>() orderby p.Birthdate select p).Take(3).ToList();
-            var reqLambda = flight.Passangers.OfType<Traveller>().OrderBy(p => p.Birthdate).Take(3);
-            return reqLambda;
-        }
+        //public IEnumerable<Passenger> SeniorTravellers(Flight flight)
+        //{
+        //    //return (from p in flight.Passangers.OfType<Traveller>() orderby p.Birthdate select p).Take(3).ToList();
+        //    var reqLambda = flight.Passangers.OfType<Traveller>().OrderBy(p => p.Birthdate).Take(3);
+        //    return reqLambda;
+        //}
         public void DestinationGroupedFlights()
         {
 

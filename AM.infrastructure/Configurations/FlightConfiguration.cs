@@ -12,7 +12,7 @@ namespace AM.infrastructure.Configurations
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Flight> builder)
         {
-            builder.HasMany(f=>f.Passangers).WithMany(p=>p.Flights).UsingEntity(t=>t.ToTable("Reservation"));
+            //builder.HasMany(f=>f.Passangers).WithMany(p=>p.Flights).UsingEntity(t=>t.ToTable("Reservation"));
             builder.HasOne(f => f.MyPlane).WithMany(p => p.Flights).HasForeignKey(f => f.PlaneId).OnDelete(DeleteBehavior.ClientSetNull);
         }
     }

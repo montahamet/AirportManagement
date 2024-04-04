@@ -13,6 +13,7 @@ namespace AM.infrastructure
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseLazyLoadingProxies();
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;
                      Initial Catalog=MontahaDB;Integrated Security=true");
             base.OnConfiguring(optionsBuilder);
@@ -27,7 +28,9 @@ namespace AM.infrastructure
             modelBuilder.ApplyConfiguration(new PlaneConfiguration());
             modelBuilder.ApplyConfiguration(new FlightConfiguration());
             modelBuilder.ApplyConfiguration(new PassengerConfiguration());
-
+            modelBuilder.ApplyConfiguration(new TicketConfiguration());
+            modelBuilder.Entity<Staff>().ToTable("Staff");
+            modelBuilder.Entity<Traveller>().ToTable("Travellers");
 
         }
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)

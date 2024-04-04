@@ -22,7 +22,7 @@ namespace AM.ApplicationCore.Domain
         public FullName FullName { get; set; }
         [RegularExpression("^[0-9]{8}$")]
         public string TelNumber { get; set; }
-        public ICollection<Flight> Flights{ get; set; }
+        public virtual ICollection<Ticket> Tickets{ get; set; }
         public override string ToString()
         {
             return "Firstname= "+FullName.FirstName+" LastName= "+FullName.LastName;
@@ -47,5 +47,6 @@ namespace AM.ApplicationCore.Domain
         public virtual void PassengerType () {
             Console.WriteLine("I am a Passenger");
         }
+
     }
 }

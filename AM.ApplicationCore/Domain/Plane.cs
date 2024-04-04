@@ -16,7 +16,7 @@ namespace AM.ApplicationCore.Domain
         public DateTime ManufactureDate { get; set; }
         //public int PlanedId { get; set; }
         public PlaneType planetype { get; set; }
-        public ICollection<Flight> Flights { get; set; }
+        public virtual ICollection<Flight> Flights { get; set; }
         public override string ToString()
         {
             return "La Capacite = "+ Capacity;

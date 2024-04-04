@@ -64,10 +64,10 @@ foreach (var item in FM.OrderedDurationFlights())
     
 }
 Console.WriteLine("********************");
-foreach (var item in FM.SeniorTravellers(TestData.flight1))
-{
-    Console.WriteLine(item);
-}
+////foreach (var item in FM.SeniorTravellers(TestData.flight1))
+//{
+//    Console.WriteLine(item);
+//}
 Console.WriteLine("********************");
 //FlightMethods FM = new FlightMethods { Flights = TestData.listFlights };
 FM.DestinationGroupedFlights();
@@ -82,4 +82,4 @@ Console.WriteLine("After"+pass1.FullName.FirstName+""+pass1.FullName.LastName);
 AMContext context = new AMContext { };
 context.Flights.Add(TestData.flight2);
 context.SaveChanges();
-
+Console.WriteLine(context.Flights.First().MyPlane.Capacity);

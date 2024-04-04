@@ -17,6 +17,10 @@ namespace AM.infrastructure.Configurations
             { full.Property(f => f.FirstName).HasMaxLength(30).HasColumnName("PassFirstName"); ;
                 full.Property(f => f.LastName).IsRequired().HasColumnName("PassLastName");
                 });
+            //builder.HasDiscriminator<string>("IsTraveller")
+            //    .HasValue<Traveller>("1")
+            //    .HasValue<Staff>("2")
+            //    .HasValue<Passenger>("0");
         }
     }
 }
