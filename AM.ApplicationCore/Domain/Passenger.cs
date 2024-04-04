@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,17 +9,23 @@ namespace AM.ApplicationCore.Domain
 {
     public class Passenger
     {
-        public int Id { get; set; }
+        //controle de saisie et nom des attributs dans la base de donnes 
+        //public int Id { get; set; }
+        [Display(Name ="Date of Birth")]
+        [DataType(DataType.DateTime)]
         public DateTime Birthdate { get; set; }
+        [Key]
+        [StringLength(7)]
         public string PassportNumber { get; set; }
+        [DataType(DataType.EmailAddress)]
         public string EmailAddress{ get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public FullName FullName { get; set; }
+        [RegularExpression("^[0-9]{8}$")]
         public string TelNumber { get; set; }
         public ICollection<Flight> Flights{ get; set; }
         public override string ToString()
         {
-            return "Firstname= "+FirstName+" LastName= "+LastName;
+            return "Firstname= "+FullName.FirstName+" LastName= "+FullName.LastName;
         }
         /* public bool CheckProfile(String firstname ,  String lastname)
          {
@@ -32,10 +39,10 @@ namespace AM.ApplicationCore.Domain
         {
             if (email == null)
             {
-                return this.FirstName == firstname && this.LastName == lastname ;
+                return this.FullName.FirstName == firstname && this.FullName.LastName == lastname ;
             }
             else
-                return this.FirstName == firstname && this.LastName == lastname && this.EmailAddress == email;
+                return this.FullName.FirstName == firstname && this.FullName.LastName == lastname && this.EmailAddress == email;
         }
         public virtual void PassengerType () {
             Console.WriteLine("I am a Passenger");

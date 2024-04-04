@@ -10,13 +10,13 @@ Plane p1 = new Plane();
 p1.Capacity = 10;
 p1.ManufactureDate = new DateTime(2024, 01, 29);
 p1.planetype = PlaneType.Boing;
-p1.Id = 1;
+p1.PlaneId = 1;
 Console.WriteLine(p1);
 //Plane p2 = new Plane(PlaneType.Airbus, 150,DateTime.Now);
 //Console.WriteLine(p2);
 Plane p3 = new Plane { 
     Capacity = 10111,
-    Id = 1,
+    PlaneId = 1,
     planetype = PlaneType.Boing,
 
 
@@ -24,8 +24,11 @@ Plane p3 = new Plane {
 Console.WriteLine(p3);
 Passenger P1 = new Passenger
 {
-    FirstName = "Test",
-    LastName = "Test",
+    FullName = new FullName
+    {
+        FirstName = "Test",
+        LastName = "Test"
+    },
     EmailAddress = "Test",
 };
 Console.WriteLine(P1.CheckProfile("Test","Test"));
@@ -70,9 +73,9 @@ Console.WriteLine("********************");
 FM.DestinationGroupedFlights();
 Console.WriteLine("********************");
 //Console.WriteLine("Before" + pass1.FirstName + "" + pass1.LastName);
-Passenger pass1= new Passenger() { FirstName ="montaha",LastName="metjaouel"};//initialiseur d objet
+Passenger pass1= new Passenger() { FullName = new FullName { FirstName = "montaha", LastName = "metjaouel" } };//initialiseur d objet
 pass1.UpperFullName();
-Console.WriteLine("After"+pass1.FirstName+""+pass1.LastName);
+Console.WriteLine("After"+pass1.FullName.FirstName+""+pass1.FullName.LastName);
 
 
 
