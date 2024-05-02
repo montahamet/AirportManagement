@@ -98,19 +98,19 @@ namespace AM.UI.WEB.Controllers
         }
 
         // GET: FlightController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete()
         {
-            _flightService.Delete(id);
-    return RedirectToAction(nameof(Index));
+            return View();
         }
 
         // POST: FlightController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
+                _flightService.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

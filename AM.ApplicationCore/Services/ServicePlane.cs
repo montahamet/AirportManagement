@@ -10,9 +10,13 @@ namespace AM.ApplicationCore.Services
 {//heritage avant l implementation de l interface
     public class ServicePlane : Service<Plane>, IServicePlane
     {
+        private readonly IUnitOfWork _unitOfWork;
+
         public ServicePlane(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
+            _unitOfWork = unitOfWork;
         }
+
 
         public bool Availabe(int n, Flight flight)
         {
@@ -38,6 +42,15 @@ namespace AM.ApplicationCore.Services
         public IList<Traveller> GetTravellers(Plane plane)
         {
             return GetById(plane.PlaneId).Flights.SelectMany(f=>f.Tickets).Select(t=>t.MyPassenger).OfType<Traveller>().Distinct().ToList();
+        }
+        public void Delete(int id)
+        {
+            var plane = GetById(id);
+            if (plane != null)
+            {
+                _unitOfWork.Repository<Plane>().Delete(plane);
+                _unitOfWork.Save();
+            }
         }
     }
 }

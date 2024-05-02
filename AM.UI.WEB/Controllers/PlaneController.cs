@@ -54,16 +54,18 @@ namespace AM.UI.WEB.Controllers
         // GET: PlaneController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(_planeService.GetById(id));
         }
 
         // POST: PlaneController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Plane plane)
         {
             try
             {
+                _planeService.Update(plane);
+                _planeService.Commit();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -73,7 +75,7 @@ namespace AM.UI.WEB.Controllers
         }
 
         // GET: PlaneController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete()
         {
             return View();
         }
@@ -81,10 +83,11 @@ namespace AM.UI.WEB.Controllers
         // POST: PlaneController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
+                _planeService.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

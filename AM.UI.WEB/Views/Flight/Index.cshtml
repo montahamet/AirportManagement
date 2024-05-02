@@ -85,8 +85,9 @@
                     <ing src="~/uploads/@item. Pilot" width="50" height="50">
                 </td>
             <td>
-                    @Html.ActionLink("Plane", "Details", "Plane",new { id=item. PlaneId })
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Plane", "Details", "Plane",new { id=item.PlaneId })|
+@*                    @Html.ActionLink("Plane", "Details", "Plane",new { id=item. PlaneId })
+*@                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
 @*                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
 
