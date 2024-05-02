@@ -23,6 +23,7 @@ namespace AM.infrastructure
         public DbSet<Plane> Planes { get; set; }
         public DbSet<Staff> Staffs { get; set; }
         public DbSet<Traveller> Travellers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PlaneConfiguration());

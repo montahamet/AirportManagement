@@ -40,7 +40,7 @@ namespace AM.ApplicationCore.Services
         }
         public List<DateTime> GetFlightDates(string destination)
         {
-            //List<DateTime> dates = new List<DateTime>();
+            List<DateTime> dates = new List<DateTime>();
             /* for (int i = 0; i < Flights.Count; i++)
              {
                  if (Flights[i].Destination == destination)

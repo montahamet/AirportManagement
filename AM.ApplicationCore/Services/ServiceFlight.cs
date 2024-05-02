@@ -11,8 +11,12 @@ namespace AM.ApplicationCore.Services
 {
     public class ServiceFlight : Service<Flight>, IServiceFlight
     {
+        private readonly IUnitOfWork _unitOfWork;
+
         public ServiceFlight(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
+            _unitOfWork = unitOfWork;
+
         }
 
         public void DisplayNbreTraveller(DateTime date1, DateTime date2)
@@ -33,5 +37,19 @@ namespace AM.ApplicationCore.Services
         {
             return Get(f => f.MyPlane == p && f.FlightDate==date).Tickets.Select(t=>t.MyPassenger).OfType<Traveller>().ToList();
         }
+        public IEnumerable<Flight> SortFlights()
+        {
+            return GetAll().OrderByDescending(f => f.FlightDate);
+        }
+        public void Delete(int id)
+        {
+            var flight = GetById(id);
+            if (flight != null)
+            {
+                _unitOfWork.Repository<Flight>().Delete(flight);
+                _unitOfWork.Save();
+            }
+        }
+
     }
 }

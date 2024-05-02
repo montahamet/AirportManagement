@@ -12,5 +12,8 @@ namespace AM.ApplicationCore.Interfaces
         IList<Staff> GetStaffs(int id);
         IList<Traveller> GetTravellers(Plane p, DateTime date);
         void DisplayNbreTraveller(DateTime date1, DateTime date2);
+        public IEnumerable<Flight> SortFlights();
+        void Delete(int id);
+
     }
 }
